@@ -10,7 +10,7 @@ Si esta a la misma distancia de ambos, se escribir´a “EMPATE”.
 Ten en cuenta que el año 0 no existio, por lo que, por ejemplo, la distancia entre los años –1 y 1 es 1.
 */
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class Main {
@@ -32,8 +32,8 @@ public class Main {
             int distanciaAB=Math.abs(A - B);
             int distanciaCB=Math.abs(C - B);
 
-
-            if (distanciaAB==distanciaCB) {
+            // SI DISTANCIAS SON IGUALES O ||  DIFERENCIA ENTRE AMBOS EN VALOR ABSOLUTA Y COMPARAS CON <=1----> 1==2    y    1<=1     al ser esta true sale EMPATE
+            if (distanciaAB == distanciaCB || Math.abs(distanciaAB - distanciaCB) <= 1/*distanciaAB==distanciaCB*/) {
                 System.out.println("EMPATE");
             }
             else if (distanciaAB<distanciaCB) {
