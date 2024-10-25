@@ -19,11 +19,10 @@ public class Main {
         Scanner leer=new Scanner(System.in);
 
         //para que lea los diferentes casos que hay que hacer
-        System.out.println("Ingrese un numero");
         int casos=leer.nextInt();
 
-        // los casos diferentes (años)
-        for (int i = 0; i < casos; i++) {
+        // los casos diferentes (años) siempre hasta que llegue a 0
+        while(casos-- != 0) {
             int A=leer.nextInt(); // Año A
             int B=leer.nextInt(); // Año B
             int C=leer.nextInt(); // Año C
@@ -32,14 +31,18 @@ public class Main {
             int distanciaAB=Math.abs(A - B);
             int distanciaCB=Math.abs(C - B);
 
-            // SI DISTANCIAS SON IGUALES O ||  DIFERENCIA ENTRE AMBOS EN VALOR ABSOLUTA Y COMPARAS CON <=1----> 1==2    y    1<=1     al ser esta true sale EMPATE
-            if (distanciaAB == distanciaCB || Math.abs(distanciaAB - distanciaCB) <= 1/*distanciaAB==distanciaCB*/) {
+            //como el 0 no existe si el primer num es negativo y el segundo positivo, la distancia disminuye 1.
+            if (A < 0 && B > 0) distanciaAB--;
+            if (B < 0 && C > 0) distanciaCB--;
+
+            // SI DISTANCIAS SON IGUALES  sale EMPATE
+            if (distanciaAB == distanciaCB ) {
                 System.out.println("EMPATE");
-            }
+            } // AB MENOR QUECB , A ESTA MAS CERCA DE B QUE C
             else if (distanciaAB<distanciaCB) {
                 System.out.println(A);
             }
-            else{
+            else{ // C ES EL MAS CERCANO
                 System.out.println(C);
             }
         }
